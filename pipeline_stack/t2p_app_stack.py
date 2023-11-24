@@ -11,7 +11,7 @@ class T2pAppStack(cdk.Stack):
 
         Function(self, "LambdaFunction",
             runtime=Runtime.PYTHON_3_8,
-            handler="src/functions/predict.handler",
+            handler="predict.handler",
             code=Code.from_asset("src/functions"),
             environment={
                 "BUCKET_NAME": bucket.bucket_name
