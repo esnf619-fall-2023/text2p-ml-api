@@ -1,6 +1,6 @@
 import aws_cdk as cdk
 from constructs import Construct
-from aws_cdk.pipelines import CodePipeline, CodePipelineSource, ShellStep
+from aws_cdk.pipelines import CodePipeline, CodePipelineSource, ShellStep, ManualApprovalStep
 from pipeline_stack.t2p_pipeline_app_stage import T2pPipelineAppStage
 
 
@@ -22,5 +22,8 @@ class T2pPipelineStack(cdk.Stack):
         wave = pipeline.add_wave("wave")
         wave.add_stage(T2pPipelineAppStage(self, "qa",
                                           env=cdk.Environment(account="802697717686", region="us-east-1")))
+        
+        wave.add_post(ManualApprovalStep('approval'))
+
         wave.add_stage(T2pPipelineAppStage(self, "prod",
                                           env=cdk.Environment(account="802697717686", region="us-east-1")))
