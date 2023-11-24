@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import aws_cdk as cdk
-from pipeline_stack.t2p_pipeline_stack import T2pPipelineStack
+from stack.t2p_pipeline_stack import T2pPipelineStack
 
 app = cdk.App()
 T2pPipelineStack(app, "T2pPipelineStack",

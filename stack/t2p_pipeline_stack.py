@@ -20,10 +20,14 @@ class T2pPipelineStack(cdk.Stack):
                                 )
 
         wave = pipeline.add_wave("wave")
+
+        # add qa envoironment stage
         wave.add_stage(T2pPipelineAppStage(self, "qa",
                                           env=cdk.Environment(account="802697717686", region="us-east-1")))
         
-        wave.add_pre(ManualApprovalStep('approval'))
-
+        # Add manual approval step
+        wave.add_manual_approval("ManualApproval")
+        
+        # add prod envoironment stage
         wave.add_stage(T2pPipelineAppStage(self, "prod",
                                           env=cdk.Environment(account="802697717686", region="us-east-1")))
