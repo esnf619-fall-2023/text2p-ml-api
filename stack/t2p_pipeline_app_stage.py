@@ -1,6 +1,6 @@
 import aws_cdk as cdk
 from constructs import Construct
-from pipeline_stack.t2p_app_stack import T2pAppStack
+from stack.t2p_app_stack import T2pAppStack
 
 
 class T2pPipelineAppStage(cdk.Stage):

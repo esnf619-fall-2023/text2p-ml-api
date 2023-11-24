@@ -1,7 +1,7 @@
 import aws_cdk as cdk
 from constructs import Construct
 from aws_cdk.pipelines import CodePipeline, CodePipelineSource, ShellStep, ManualApprovalStep
-from pipeline_stack.t2p_pipeline_app_stage import T2pPipelineAppStage
+from stack.t2p_pipeline_app_stage import T2pPipelineAppStage
 
 
 class T2pPipelineStack(cdk.Stack):
