@@ -16,7 +16,10 @@ from xgboost import XGBClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer # For vectorizing text data
 from sklearn.metrics import accuracy_score
 import pickle
+import os
+import boto3
 
+s3 = boto3.client('s3')
 # Set up logging
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -87,6 +90,11 @@ def predict_personality(text):
     return labels[label_predicted], label_predicted
 
 def handler(event, context):
+    bucket_name = os.environ['BUCKET_NAME']
+    model_file_name = os.environ['MODEL_FILE_NAME']
+    logger.info('Bucket Name: ' + bucket_name)
+    logger.info('Model File Name: ' + model_file_name)
+    s3.download_file(bucket_name, model_file_name, '/' + model_file_name)
     # Log the received event
     logger.info('Received event: ' + json.dumps(event))
     # post = event.body.comment
