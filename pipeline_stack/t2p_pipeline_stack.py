@@ -12,7 +12,7 @@ class T2pPipelineStack(cdk.Stack):
         pipeline = CodePipeline(self, "T2pPipeline",
                                 pipeline_name="T2pPipeline",
                                 synth=ShellStep("Synth",
-                                                input=CodePipelineSource.git_hub("esnf619-fall-2023/text2p-ml-api", "main", authentication=cdk.SecretValue.secrets_manager("dev/text2p/github-token")),
+                                                input=CodePipelineSource.git_hub("esnf619-fall-2023/text2p-ml-api", "main", authentication=cdk.SecretValue.secrets_manager("github-access-token-secret")),
                                                 commands=["npm install -g aws-cdk",
                                                           "python -m pip install -r requirements.txt",
                                                           "cdk synth"]
