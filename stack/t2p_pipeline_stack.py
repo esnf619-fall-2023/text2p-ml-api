@@ -22,10 +22,10 @@ class T2pPipelineStack(cdk.Stack):
         
         # add qa envoironment stage
         staging_wave = pipeline.add_wave("staging-wave")
-        staging = T2pPipelineAppStage(self, "staging", env=cdk.Environment(account=AWS_ACCOUNT_NUMBER, region=AWS_REGION))
+        staging = T2pPipelineAppStage(self, "staging", env_name="staging", env=cdk.Environment(account=AWS_ACCOUNT_NUMBER, region=AWS_REGION))
         staging_wave.add_stage(staging)
         
         # add prod envoironment stage with a mnual approval step
         prod_wave = pipeline.add_wave("prod-wave")
-        prod = T2pPipelineAppStage(self, "prod", env=cdk.Environment(account=AWS_ACCOUNT_NUMBER, region=AWS_REGION))
+        prod = T2pPipelineAppStage(self, "prod", env_name="prod", env=cdk.Environment(account=AWS_ACCOUNT_NUMBER, region=AWS_REGION))
         prod_wave.add_stage(prod, pre=[ManualApprovalStep('ManualApproval', comment="Approve to deploy to prod")])
