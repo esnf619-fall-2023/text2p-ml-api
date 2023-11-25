@@ -16,7 +16,7 @@ class T2pAppStack(cdk.Stack):
             handler="predict.handler",
             code=Code.from_asset("src/functions"),
             environment={
-                "BUCKET_NAME": bucket.bucket_name
+                "BUCKET_NAME": bucket.bucket_name,
                 "MODEL_FILE_NAME": MODEL_FILE_NAME
             }
         )
