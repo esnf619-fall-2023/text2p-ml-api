@@ -21,5 +21,3 @@ class T2pAppStack(cdk.Stack):
                 "MODEL_FILE_NAME": f"{env_name}-MODEL_FILE_NAME"
             }
         )
-        
-        from aws_cdk import aws_lambda_python as _lambda_python
