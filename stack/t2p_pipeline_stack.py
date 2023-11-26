@@ -16,8 +16,7 @@ class T2pPipelineStack(cdk.Stack):
                                                 input=CodePipelineSource.git_hub("esnf619-fall-2023/text2p-ml-api", "main", authentication=cdk.SecretValue.secrets_manager("github-access-token-secret")),
                                                 commands=["npm install -g aws-cdk",
                                                           "python -m pip install -r requirements.txt",
-                                                          "cdk synth",
-                                                          "rm -rfv cdk.out/asset.*"]
+                                                          "cdk synth"]
                                                 )
                                 )
         
